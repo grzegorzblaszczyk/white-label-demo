@@ -1,0 +1,4 @@
+services:
+#    wl_materialize_template.example:
+#        class: WL\MaterializeTemplateBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

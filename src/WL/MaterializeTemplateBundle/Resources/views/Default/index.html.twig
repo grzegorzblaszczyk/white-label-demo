@@ -1,0 +1,16 @@
+{% extends "WLAppBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+
+    <link rel="canonical" href="http://{{ app.request.host }}" />
+{% endblock %}
+
+{% block content %}
+
+
+   <h1>Materialize123</h1>
+
+{% endblock %}
