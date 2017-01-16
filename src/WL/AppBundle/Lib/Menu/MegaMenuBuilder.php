@@ -22,7 +22,7 @@ use WL\AppBundle\Lib\Type\MenuLink;
 class MegaMenuBuilder implements MenuInterface
 {
 
-    private $template = '@WLApp/megaMenu.html.twig';
+    protected $template = '@WLApp/megaMenu.html.twig';
     /**
      * @var MenuLink[]
      */

@@ -18,7 +18,7 @@ use WL\AppBundle\Lib\Type\Menu\Link;
 
 class DropDownMenuBuilder implements MenuInterface
 {
-    private $template = '@WLMaterializeTemplate/dropDownMenu.html.twig';
+    protected $template = '@WLApp/dropDownMenu.html.twig';
     /**
      * @var Link[]
      */

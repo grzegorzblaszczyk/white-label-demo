@@ -1,4 +1,7 @@
 services:
-#    wl_materialize_template.example:
-#        class: WL\MaterializeTemplateBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    menu.mega:
+        class: WL\MaterializeTemplateBundle\Lib\Menu\MegaMenuBuilder
+        arguments: [@repo.factory.cache.file, @categories.allowed]
+    menu.dropDown:
+        class: WL\MaterializeTemplateBundle\Lib\Menu\DropDownMenuBuilder
+        arguments: [@repo.factory.cache.file]
