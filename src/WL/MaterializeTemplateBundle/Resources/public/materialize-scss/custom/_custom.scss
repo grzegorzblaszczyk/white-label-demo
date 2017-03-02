@@ -1,15 +1,1721 @@
-#footer2{
-  border:2px solid green !important;
+// ==========================================================================
+//  1. kolory
+//  2. wielkosci czcionek
+// ==========================================================================
+
+// =========================== kolory =======================================
+
+/* ----- glowne ----- */
+
+// kolor strony
+$bodyColor: color("shades", "white");
+// naglowek gorny
+$topHeaderColor: color("light-blue", "accent-4");
+// naglowek gorny
+$topHeaderLinkColor: color("shades", "white");
+// menu rozwijane - jedna lista
+$dropdownMenuColor: color("blue-grey", "darken-3");
+// menu rozwijane z lista promowanych produktow
+$dropdownMenuBgColor: color("shades", "white");
+// menu rozwijane z lista promowanych produktow - kolor tla aktywnego linku
+$dropdownActiveLinkBgColor: color("shades", "white");
+// menu rozwijane z lista promowanych produktow - kolor aktywnego linku
+$dropdownActiveLinkTextColor: color("shades", "black");
+// menu rozwijane z lista promowanych produktow - kolor linkow w lewym submenu
+$dropdownMultiLeftLinkColor: color("shades", "black");
+// menu rozwijane z lista promowanych produktow - nazwa produktu
+$dropdownMultiRightTitleColor: color("shades", "black");
+// menu rozwijane z lista promowanych produktow - cena produktu
+$dropdownMultiRightPriceColor: color("orange", "darken-4");
+// menu rozwijane z lista promowanych produktow - naglowki kolumn
+$dropdownHeaderColor: color("light-blue", "accent-4");
+// tlo menu mobilnego
+$mobileMenuBgColor: color("blue-grey", "lighten-1");
+// menu mobilne - kolor linkow
+$mobileMenuLinkColor: color("shades", "white");
+// menu mobilne - kolor aktywnych linkow
+$mobileMenuActiveLinkColor: color("shades", "white");
+// menu mobilne - kolor tla aktywnych linkow
+$mobileMenuActiveLinkBgColor: color("blue-grey", "lighten-1");
+// menu mobilne - kolor naglowka
+$mobileMenuHeaderTextColor: color("shades", "white");
+// menu mobilne - kolor tla naglowka
+$mobileMenuHeaderBgColor: color("blue-grey", "darken-3");
+// menu mobilne - kolor rozwinietego menu
+$mobileDropdownListBgColor: color("blue-grey", "lighten-2");
+// menu mobilne - kolor linkow w rozwinietym menu
+$mobileDropdownListLinkColor: color("shades", "white");
+// breadcrumbs
+$topBreadcrumbsColor: color("light-blue", "accent-2");
+// przycisk szukania - tlo
+$topSearchBtnColor: color("yellow", "darken-2");
+// przycisk szukania - tekst
+$topSearchBtnTextColor: color("shades", "white");
+// stopka
+$footerBgColor: color("blue-grey", "lighten-1");
+// stopka - tekst
+$footerTextColor: color("shades", "white");
+// copyright
+$coopyrightTextColor: color("shades", "white");
+// informacja o braku wynikow wyszukiwania - kolor tla
+$alertBoxBgColor: color("blue-grey", "darken-3");
+// informacja o braku wynikow wyszukiwania - kolor tekstu
+$alertBoxTextColor: color("shades", "white");
+
+/* ----- strona glowna ----- */
+
+/* lista produktow  */
+// tlo kontenera
+$cardBgColor: color("blue-grey", "lighten-5");
+// tekst
+$cardTextColor: color("blue-grey", "darken-2");
+// cena
+$cardPriceColor: color("orange", "darken-4");
+// kropki - wiecej informacji
+$cardMoreCloseBtnColor: color("shades", "black");
+// przycisk - tlo
+$cardBgButtonColor: color("yellow", "darken-2");
+// przycisk - tekst
+$cardTextButtonColor: color("shades", "black");
+
+/* ----- strona kategorii  ----- */
+
+// filtry - tlo naglowka
+$filtersHeaderBgColor: color("blue-grey", "lighten-3");
+// filtry - tekst naglowka
+$filtersHeaderColor: color("shades", "white");
+// filtry - kolor tla linkow
+$filtersBgColor: color("shades", "transparent");
+// filtry - kolor linkow
+$filtersTextColor: color("blue-grey", "base");
+// filtry - kolor tla linkow po najechaniu
+$filtersHoverBgColor: color("blue-grey", "lighten-5");
+// filtry - kolor tla aktywnego linku
+$filtersActiveBgColor: color("blue-grey", "lighten-5");
+// filtry - kolor tekstu aktywnego linku
+$filtersActiveTextColor: color("orange", "darken-4");
+// filtry - kolor tla etykiety (liczby produktow) aktywnego linku
+$filtersActiveBadgeColor: color("shades", "white");
+// filtry - kolor linku po najechaniu
+$filtersTextHoverColor: color("orange", "darken-4");
+// filtry - ikonka rozwijania
+$filtersHeaderIcon: color("shades", "white");
+// filtry - kolor tla etykiety (liczby produktow)
+$filtersBadgeBgColor: color("blue-grey", "lighten-5");
+// filtry - kolor tekstu etykiety (liczby produktow)
+$filtersBadgeTextColor: color("shades", "black");
+// filtry - kolor opisu kategorii
+$filtersDescription: color("shades", "black");
+// filtry - kolor tla przycisku zakres cenowy
+$filtersPriceRangeBtn: color("blue-grey", "lighten-1");
+// filtry - kolor tekstu przycisku zakres cenowy
+$filtersPriceRangeTextBtn: color("shades", "white");
+// tytul kategorii
+$categoryTitle: color("blue-grey", "darken-4");
+// lista produktow w kategorii
+$categoryTitleProductsCount: color("blue-grey", "base");
+// rodzaj etykiety (odznaka) - kolor tekstu
+$categoryBadgeLabel: color("blue-grey", "lighten-4");
+// etykieta (odznaka) - kolor tla
+$categoryBadgeBgColor: color("blue-grey", "lighten-4");
+// etykieta (odznaka) - kolor tekstu
+$categoryBadgeTextColor: color("shades", "black");
+// przycisk sortowania - tlo
+$categoryOptionsBtnColor: color("blue-grey", "lighten-1");
+// opcje sortowania - naglowek
+$categoryOptionsHeaderColor: color("blue-grey", "darken-4");
+// opcje sortowania - kolor tla
+$categoryOptionsBgColor: color("blue-grey", "lighten-4");
+// opcje sortowania - kolor linkow
+$categoryOptionsLink: color("blue-grey", "base");
+// opcje sortowania - kolor aktywnego linka
+$categoryOptionsActiveLink: color("orange", "darken-4");
+// opcje sortowania - kolor tla aktywnego linka
+$categoryOptionsActiveBgLink: color("blue-grey", "lighten-5");
+// tlo produktu
+$categoryProductColor: color("blue-grey", "lighten-5");
+// cena produktu
+$categoryProductPriceColor: color("orange", "darken-4");
+// przycisk produktu - kolor tekstu
+$categoryProductBtnTextColor: color("shades", "black");
+// przycisk produktu - kolor tla
+$categoryProductBtnBgColor: color("yellow", "darken-2");
+// nazwa produktu
+$categoryProductNameTextColor: color("blue-grey", "darken-2");
+// tooltipy - kolory tla ikon
+$categoryProdDetPopupBgColor: color("yellow", "darken-2");
+// tooltipy - kolory ikon
+$categoryProdDetPopupTextColor: color("shades", "white");
+// paginacja - kolor numery strony
+$categoryPaginationTextColor: color("shades", "black");
+// paginacja - kolor tla aktywnego numery strony
+$categoryPaginationActiveBgColor: color("blue-grey", "lighten-5");
+// paginacja - kolor aktywnego numery strony
+$categoryPaginationActiveTextColor: color("orange", "darken-4");
+// produkt - informacje dodatkowe - etykieta
+$productDetailsTextColor: color("blue-grey", "base");
+// produkt - informacje dodatkowe - wartosc
+$productDetailsSpecTextColor: color("blue-grey", "lighten-2");
+
+/* ----- product page ----- */
+
+// produkt - nazwa
+$productNameColor: color("blue-grey", "darken-4");
+// produkt - ocena produktu
+$productTitleStarColor: color("blue-grey", "base");
+// produkt - cena
+$productPriceColor: color("orange", "darken-4");
+// produkt - przycisk zobacz w sklepie - tlo
+$productOfferButtonBg: color("yellow", "darken-2");
+// produkt - przycisk zobacz w sklepie - tekst
+$productOfferButtonText: color("shades", "black");
+// produkt - ocena sklepu
+$productShopStarsColor: color("blue-grey", "base");
+// lista ofert - przycisk zobacz w sklepie - kolor tla
+$productMultiOfferBg: color("yellow", "darken-2");
+// lista ofert - przycisk zobacz w sklepie - kolor tekstu
+$productMultiOfferText: color("shades", "black");
+// zakladka - kolor etykiety
+$tabsTextColor: color("blue-grey", "lighten-2");
+// zakladka - kolor aktywnej etykiety
+$tabsActiveTextColor: color("orange", "darken-4");
+// zakladka - kolor podkreslenia aktywnej etykiety
+$tabsActiveBorderColor: color("orange", "darken-4");
+// produkt - informacje dodatkowe - etykieta
+$productDetailsListColor: color("blue-grey", "base");
+// produkt - informacje dodatkowe - wartosc
+$productDetailsListSpecColor: color("blue-grey", "lighten-2");
+// opisu produktu - tlo kontenera
+$tabsContainerBg: color("blue-grey", "lighten-5");
+// lista ofert - nazwa produktu
+$productShopListProductName: color("blue-grey", "darken-4");
+// lista ofert - cena produktu
+$productShopListProductPrice: color("orange", "darken-4");
+// lista ofert - ocena sklepu
+$productShopListShopRating: color("blue-grey", "lighten-2");
+// produkt - kolor opis
+$productDescription: color("shades", "black");
+// promowane produkty - przyciski nawigacji - tlo
+$productPromoNavBgColor: color("blue-grey", "lighten-1");
+// promowane produkty - przyciski nawigacji - tekst
+$productPromoNavTextColor: color("shades", "white");
+// promowane produkty - naglowek
+$productPromoHeader: color("blue-grey", "darken-4");
+// promowane produkty - naglowek - link
+$productPromoHeaderLink: color("blue-grey", "base");
+
+/* ----- modal product ----- */
+// kolor tla modala
+$modalBgColor: color("shades", "white");
+// kolor tla produktow z oferty
+$modalOfferBgColor: color("shades", "white");
+// kolor tla produktow podobnych i najpopularniejszych
+$modalProductBgColor: color("shades", "white");
+
+
+// =========================== wielkosci czcionek =======================================
+
+/* ----- glowne  ----- */
+// naglowek gorny - linki
+$headerLinkFs: 13px;
+// menu rozwijane z lista promowanych produktow - naglowki kolumn
+$fullWidthDropdownColumnsHeaderFs: 20px;
+// menu rozwijane z lista promowanych produktow -  linki w lewym submenu
+$fullWidthDropdownLeftLinkFs: 13px;
+// menu rozwijane z lista promowanych produktow - nazwa produktu
+$fullWidthDropdownRightTitlesFs: 12px;
+// menu rozwijane z lista promowanych produktow - cena produktu
+$fullWidthDropdownRightPriceFs: 18px;
+// stopka - naglowki
+$footerHeaderFs: 20px;
+// stopka - opis
+$footerDescriptionFs: 14px;
+// stopka - copyright
+$footerCopyrightFs: 13px;
+
+
+/* ----- strona glowna ----- */
+// tlo kontenera produktowego
+$cardTitleFs: 20px;
+// cena produktu
+$cardPriceFs: 20px;
+// opis produktu
+$cardDescriptionFs: 17px;
+// przycisk zobacz oferte
+$cardButtonFs: 15px;
+
+/* ----- strona kategorii ----- */
+// tytul kategorii
+$categoryTitleFs: 30px;
+// cena produktu
+$categoryPriceSize: 20px;
+// nazwa produktu
+$categoryPoductTitle: 14px;
+// ilosc produktow
+$categoryProductsCountFs: 18px;
+
+/* ---- strona produktu ---- */
+// lista pfert - nazwa produktu
+$productShopListProductNameFs: 14px;
+// lista pfert - cena produktu
+$productShopListProductPriceFs: 18px;
+// lista pfert - ocena sklepu
+$productShopListShopRatingFs: 12px;
+// opis produktu
+$productDescriptionFs: 16px;
+// produkty podobne/najpopularniejsze - nazwa produktu
+$productTopSimilarNameFs: 13px;
+// produkty podobne/najpopularniejsze - cena produktu
+$productTopSimilarPriceFs: 13px;
+// produkty podobne/najpopularniejsze - przycisk produktu
+$productTopSimilarBtnFs: 10px;
+
+/* ---- ustawienia ---- */
+$container-step: 1300px;
+
+body {
+  background-color: $bodyColor;
+
+  .container {
+    @media only screen and (max-width: $container-step) {
+      width: 90% !important;
+      max-width: 90% !important;
+    }
+  }
 }
 
-body{
-  border:2px solid green;
+.page {
+  padding-top: 30px;
+
+  @media #{$medium-and-down}{
+    padding-top: 15px;
+  }
 }
 
-.logotyp{
-  border: 1px solid red;
-  display: inline-block;
+.btn-small {
+  font-size: 12px !important;
+  text-transform: none !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+
+  i {
+    font-size: 13px !important;
+  }
+}
+
+.material-tooltip {
+  max-width: 200px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.bx-wrapper .bx-viewport {
+  border: 0;
+  box-shadow: none;
+}
+
+.products {
+  padding-top: 30px;
+  h4 {
+    margin-top: 3px;
+    font-size: 1.7rem;
+    color: $productPromoHeader;
+    a {
+      color: $productPromoHeaderLink;
+    }
+  }
+}
+
+/* page header */
+header {
+
+  nav {
+    box-shadow: none;
+    background-color: $topHeaderColor;
+
+    &.nav-extended {
+      height: auto;
+      line-height: 1em;
+      position: relative;
+
+      .nav {
+        text-align: right;
+        float: right;
+
+        > li {
+          height: 60px;
+        }
+      }
+
+      .nav-wrapper {
+        height: 60px !important;
+        line-height: 60px;
+        position: relative;
+      }
+
+      .brand-logo {
+        z-index: 2;
+      }
+
+      .button-collapse {
+        @media #{$medium-and-down}{
+          margin-left: 0;
+        }
+      }
+    }
+
+  }
+
+  #navbarfull {
+    position: relative;
+
+    li {
+
+      &:hover {
+        background-color: transparent;
+      }
+
+      a {
+        font-size: $headerLinkFs;
+        color: $topHeaderLinkColor;
+        padding: 0 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+
+        .material-icons {
+          margin-left: 0;
+          width: 17px;
+          text-align: left;
+          line-height: 58px;
+          opacity: .4;
+
+          @media #{$medium-and-down}{
+            line-height: 48px;
+          }
+        }
+
+        &.active {
+          background-color: $dropdownActiveLinkBgColor;
+          color: $dropdownActiveLinkTextColor;
+        }
+
+      }
+    }
+
+    .dropdown-content {
+      width: 100% !important;
+      max-width: 100% !important;
+      left: 0 !important;
+      top: 59px !important;
+      overflow-x: hidden;
+      padding: 10px;
+      background-color: $dropdownMenuBgColor;
+      -webkit-box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 1px 2px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+
+      ul {
+        li {
+          > .row {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .dropdown-header {
+        font-size: $fullWidthDropdownColumnsHeaderFs;
+        padding-left: 15px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        color: $dropdownHeaderColor;
+      }
+
+      .left-col {
+
+        li {
+          min-height: 1em;
+
+          a {
+            line-height: 2.2em;
+            font-size: $fullWidthDropdownLeftLinkFs;
+            padding: 0 15px;
+            color: $dropdownMultiLeftLinkColor;
+          }
+        }
+
+      }
+
+      .right-col {
+        padding-top: 11px;
+
+        .product {
+          text-align: center;
+          padding: 10px 0;
+          margin-bottom: 15px;
+
+          h5 {
+            font-size: $fullWidthDropdownRightTitlesFs;
+            line-height: 1.2em;
+            margin-top: 0;
+            text-align: left;
+            height: 3.6em;
+            overflow: hidden;
+            color: $dropdownMultiRightTitleColor;
+          }
+
+          .price {
+            font-size: $fullWidthDropdownRightPriceFs;
+            color: $dropdownMultiRightPriceColor;
+          }
+
+        }
+      }
+
+    }
+
+    #mobile-menu {
+      .dropdown-content {
+        position: relative !important;
+        top: auto !important;
+        box-shadow: none;
+
+        ul {
+          li {
+            min-height: 0;
+            a {
+              height: auto;
+              line-height: 3em;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+/* top bradcrumbs */
+#breadcrumbs {
+  line-height: 42px;
+  height: 42px;
+  background-color: $topBreadcrumbsColor;
+
+  @media #{$medium-and-down}{
+    height: auto;
+    padding-right: 15px;
+    line-height: 23px;
+    padding-left: 5px;
+
+    .container {
+      .row {
+        margin-bottom: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+    }
+
+  }
+
+  a {
+    font-size: 1rem;
+  }
+}
+
+/* search button */
+.searchBox {
+  width: 400px;
+  position: fixed;
+  right: 0;
+  z-index: 3;
+
+  .search-btn {
+    top: -7px;
+    right: 15px;
+    position: absolute;
+
+    button {
+      background-color: $topSearchBtnColor;
+
+      i {
+        color: $topSearchBtnTextColor;
+      }
+    }
+
+    @media #{$medium-and-down}{
+      top: -58px;
+      right: 3px;
+    }
+  }
+
+  > .search-con {
+    margin-top: -4px;
+    width: 0;
+    overflow: hidden;
+    right: 32px;
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+
+    @media #{$medium-and-down}{
+      margin-top: 5px;
+      margin-right: 5px;
+      top: -60px;
+    }
+
+    nav {
+      margin: 0 auto;
+      background-color: #fff;
+      height: 48px;
+      border: 0;
+      box-shadow: none;
+
+      @media #{$medium-and-down}{
+        top: 0;
+      }
+
+      .nav-wrapper {
+        height: 50px;
+
+        .input-field {
+          height: 50px;
+
+          input {
+            margin: 0;
+            height: 50px;
+            line-height: 50px;
+            border: 0;
+            box-shadow: none;
+          }
+
+          .material-icons {
+            line-height: 50px;
+            height: 50px;
+            right: 2.5rem;
+          }
+        }
+      }
+
+    }
+
+  }
+}
+
+.options {
+  margin-top: 6px;
   position: relative;
-  width: 200px;
-  float: left;
+
+  .dropdown-button {
+    background-color: $categoryOptionsBtnColor;
+  }
+
+  #dropdown-options.dropdown-content, #dropdown-options-modal.dropdown-content {
+    width: 200px !important;
+    right: 0 !important;
+    left: auto !important;
+    margin-top: 50px;
+    background-color: $categoryOptionsBgColor;
+
+    @media #{$medium-and-down}{
+      margin-right: 10px;
+    }
+
+    ul {
+      margin: 0 auto;
+      padding: 0;
+
+      li {
+        min-height: 0;
+
+        &.dropdown-header {
+          font-size: 16px;
+          line-height: 32px;
+          padding-left: 10px;
+          cursor: auto;
+          color: $categoryOptionsHeaderColor;
+
+          &:hover {
+            background: transparent;
+
+          }
+        }
+
+        a {
+          color: $categoryOptionsLink;
+          padding: 5px 10px;
+        }
+
+        &.active, &:hover {
+          a {
+            background-color: $categoryOptionsActiveBgLink;
+            color: $categoryOptionsActiveLink;
+          }
+        }
+
+      }
+    }
+  }
+
+}
+
+h1.title-page {
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 32px;
+  font-size: 30px;
+  color: $productNameColor;
+
+  @media #{$medium-and-down}{
+    padding-right: 11px;
+  }
+
+  small.stars {
+    color: $productTitleStarColor;
+  }
+
+  span {
+    line-height: 32px;
+    font-size: 16px;
+  }
+
+  .name {
+    display: block;
+    font-size: $categoryTitleFs;
+    padding-bottom: 5px;
+
+    small {
+      font-size: $categoryProductsCountFs;
+    }
+  }
+
+  .chip {
+    font-size: 14px;
+    span {
+      font-size: 14px;
+    }
+  }
+
+  .close {
+    padding: 0;
+    margin: 0 auto;
+    border: 0;
+    height: auto;
+    margin-left: 5px;
+
+    i {
+      padding: 0;
+      margin: 0 auto;
+    }
+  }
+
+  strong {
+    font-weight: 400;
+  }
+}
+
+/* ---- product page ---- */
+.product.product-details, .product.product-details, #productModal {
+
+  .gallery {
+
+    .bx-viewport{
+      height: auto !important;
+    }
+
+    .gallery-items {
+      max-width: 100%;
+      max-height:100px;
+
+      img {
+        max-width: 100%;
+      }
+
+      .gallery-item{
+        max-height:100px;
+      }
+    }
+
+    a {
+      img {
+        max-width: 100%;
+      }
+    }
+
+    ul {
+      li {
+        text-align: center;
+        img {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .top-details, .one-offer-details {
+
+    .title-page {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .stars {
+      display: block;
+      padding-bottom: 20px;
+      color: $productShopStarsColor;
+    }
+
+    .prices {
+
+      p {
+        padding-top: 0;
+        margin-top: 5px;
+        margin-bottom: 10px;
+      }
+
+      .main-price {
+        font-size: 32px;
+        line-height: 32px;
+        letter-spacing: -1.5px;
+        padding: 0;
+        margin: 0 auto;
+        white-space: nowrap;
+        color: $productPriceColor;
+      }
+
+      .btn {
+        background-color: $productOfferButtonBg;
+        color: $productOfferButtonText;
+
+        padding: 0 20px !important;
+      }
+    }
+
+    .features {
+      padding: 0;
+      margin: 0 auto;
+      line-height: 18px;
+      margin-bottom: 30px;
+
+      li {
+        display: inline-block;
+        padding: 0 10px;
+        border-left: 1px solid #d4d4d4;
+        font-size: 15px;
+        line-height: 15px;
+        color: $productDetailsListColor;
+
+        &:first-child {
+          border-left: 0;
+        }
+
+        em {
+          color: $productDetailsListSpecColor;
+        }
+      }
+    }
+
+  }
+
+}
+
+#buttonSearch {
+  padding: 0;
+  line-height: 36px;
+  margin: 0 auto;
+
+  i {
+    padding: 0;
+    margin: 0 auto;
+    line-height: 36px;
+  }
+}
+
+/* category page */
+.category {
+  padding-top: 10px;
+
+  .category-filters {
+
+    &.right-column {
+      padding-left: 15px;
+      margin-top: 9px;
+
+      @media #{$medium-and-down}{
+        padding-left: 15px;
+      }
+
+      h1.title-page {
+        color: $categoryTitle;
+        small {
+          color: $categoryTitleProductsCount;
+        }
+
+        .badge-name {
+          color: $categoryBadgeLabel;
+        }
+        .chip {
+          background-color: $categoryBadgeBgColor;
+          color: $categoryBadgeTextColor;
+          font-weight: 100;
+          i {
+            color: $categoryBadgeTextColor;
+          }
+        }
+      }
+
+    }
+
+    .collapsible {
+      border: 0;
+      box-shadow: none;
+
+      .form-price {
+        padding: 5px 10px;
+
+        .input-field {
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+
+          -webkit-flex-flow: row nowrap;
+          justify-content: start;
+          width: calc(100% - 10px);
+        }
+
+        .box-inline {
+          max-width: 45%;
+          line-height: 46px;
+        }
+
+        input {
+          text-align: center;
+        }
+
+        .filter-submit {
+          button {
+            background-color: $filtersPriceRangeBtn;
+            color: $filtersPriceRangeTextBtn;
+            text-transform: initial;
+          }
+        }
+      }
+
+      .collapsible-header {
+        min-height: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+        position: relative;
+        background-color: $filtersHeaderBgColor;
+
+        h4 {
+          font-size: 16px;
+          line-height: 34px;
+          padding-bottom: 0;
+          margin-bottom: 0;
+          min-height: 0;
+          padding-top: 0;
+          margin-top: 0;
+          color: $filtersHeaderColor;
+          font-weight: 100;
+        }
+
+        .fa {
+          position: absolute;
+          top: 0;
+          right: 0;
+          display: block;
+          line-height: 34px;
+          font-size: 16px;
+          color: $filtersHeaderIcon;
+
+          &.filter-close {
+            display: none;
+          }
+        }
+
+        &.active {
+          .fa.filter-close {
+            display: block;
+          }
+          .fa.filter-open {
+            display: none;
+          }
+        }
+      }
+
+      .collapsible-body {
+        border: 0;
+
+        &.description {
+          padding: 5px;
+          font-size: 13px;
+          padding-top: 10px;
+          color: $filtersDescription;
+        }
+      }
+
+      .collection {
+
+        border: 0;
+
+        a {
+          font-size: 13px;
+          padding: 7px 65px 7px 10px;
+          position: relative;
+          line-height: 14px;
+          color: $filtersTextColor;
+          background-color: $filtersBgColor;
+
+          &.active-category {
+            background-color: $filtersActiveBgColor;
+            color: $filtersActiveTextColor;
+
+            .badge {
+              background-color: $filtersActiveBadgeColor;
+            }
+          }
+
+          &:hover {
+            background-color: $filtersHoverBgColor;
+            color: $filtersTextHoverColor;
+
+            .badge {
+              background-color: $filtersActiveBadgeColor;
+            }
+          }
+
+          .badge {
+            position: absolute;
+            right: 7px;
+            top: 4px;
+            line-height: 20px;
+            background-color: $filtersBadgeBgColor;
+            color: $filtersBadgeTextColor;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  .row-list {
+    margin-bottom: 10px;
+  }
+
+  .pagination {
+    li {
+      a {
+        color: $categoryPaginationTextColor;
+      }
+
+      &.active {
+        background-color: $categoryPaginationActiveBgColor;
+        a {
+          color: $categoryPaginationActiveTextColor;
+        }
+      }
+    }
+  }
+
+}
+
+/* product grid view */
+.product-wrapper-grid {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+
+  .product.normal {
+    background-color: $categoryProductColor;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    transition: all .4s;
+
+    .poduct-link {
+      width: calc(100% - 30px);
+      height: 100%;
+      display: block;
+      position: absolute;
+      z-index: 2;
+      left: 15px;
+      top: 0;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+
+      .product-details-popup {
+        display: block;
+      }
+
+      .poduct-link {
+        width: 100%;
+        left: 0;
+      }
+
+      .image-thumbnail img {
+        transform: none;
+      }
+    }
+
+    .image-thumbnail {
+      width: 100%;
+      height: 100%;
+      padding-bottom: 10px;
+
+      img {
+        transition: all .2s ease-in-out;
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .product-details-popup {
+      background-color: $categoryProdDetPopupBgColor;
+      top: 0;
+      right: -13px;
+      color: red;
+      position: absolute;
+      width: 26px;
+      display: none;
+      z-index: 3;
+      border-radius: 5px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+
+      i {
+        color: $categoryProdDetPopupTextColor;
+        padding: 5px;
+        font-weight: 100;
+      }
+    }
+
+    .product-details {
+
+      > .row {
+        margin-bottom: 0;
+      }
+
+      .features {
+        display: none;
+      }
+
+      .title-features, .title {
+        color: $categoryProductNameTextColor !important;
+      }
+
+      a {
+        color: #9e9e9e;
+      }
+
+      h5 {
+        font-size: $categoryPoductTitle;
+        line-height: 1.2em;
+        max-height: 3.6em;
+        height: 3.6em;
+        overflow: hidden;
+        padding: 0 !important;
+        margin: 0;
+        text-overflow: ellipsis;
+      }
+
+      .price {
+        text-align: center;
+
+        a, .btn {
+          font-size: 13px;
+          padding: 0;
+          text-transform: initial;
+          width: 100%;
+          color: $categoryProductPriceColor;
+
+          i {
+            font-size: 13px;
+            padding-left: 5px;
+          }
+
+          span.price {
+            font-size: $categoryPriceSize;
+            line-height: 2.2em;
+            max-height: 2.2em;
+            height: 2.2em;
+
+            white-space: nowrap;
+
+          }
+
+          &.btn {
+            padding: 0 15px;
+            background-color: $categoryProductBtnBgColor;
+            color: $categoryProductBtnTextColor;
+          }
+
+        }
+      }
+
+    }
+
+  }
+
+}
+
+/* product list view */
+.product-wrapper-list {
+  .product {
+    vertical-align: top;
+    margin-bottom: 20px;
+    float: left;
+    width: 100%;
+    background-color: $categoryProductColor;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    position: relative;
+    margin-top: 10px;
+
+    &:hover {
+      .product-details-popup {
+        display: block;
+      }
+    }
+
+    .image-thumbnail {
+      width: 120px;
+      float: left;
+      img {
+        max-width: 100%;
+      }
+    }
+
+    .product-details-popup, .product-details {
+      float: right;
+      margin: 0 auto;
+      padding: 0;
+      width: calc(100% - 165px);
+      text-align: right;
+    }
+
+    .product-details-popup {
+      position: absolute;
+      bottom: 0;
+      right: -26px;
+      text-align: left;
+      width: 26px;
+      top: 0;
+      height: 50px;
+      display: none;
+      z-index: 3;
+      border-radius: 5px;
+      background-color: $categoryProdDetPopupBgColor;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+
+      i {
+        color: $categoryProdDetPopupTextColor;
+        padding: 5px;
+        font-weight: 100;
+      }
+    }
+
+    .product-details {
+
+      > .row {
+        margin-bottom: 0;
+      }
+
+      .title-features {
+        h5.title {
+          padding-top: 0 !important;
+          margin-top: 0;
+          font-size: 18px;
+          color: $categoryProductNameTextColor !important;
+          text-align: left;
+        }
+      }
+
+      .features {
+        text-align: left;
+        padding-top: 10px;
+        margin-bottom: 0;
+
+        li {
+          display: block;
+          font-size: 13px;
+          line-height: 15px;
+          text-align: left;
+          border-left: 0;
+          padding-left: 0;
+          color: $productDetailsTextColor;
+
+          em {
+            color: $productDetailsSpecTextColor;
+          }
+        }
+      }
+
+      .price {
+        span.price {
+          display: block;
+          font-size: 18px;
+          line-height: 2.2em;
+          max-height: 2.2em;
+          height: 2.2em;
+          color: $categoryProductPriceColor;
+        }
+
+        .btn {
+          padding: 0 15px;
+          background-color: $categoryProductBtnBgColor;
+          color: $categoryProductBtnTextColor;
+          line-height: 36px;
+          font-size: 13px;
+          text-transform: initial;
+          i {
+            line-height: 36px;
+            font-size: 13px;
+            padding-left: 10px;
+          }
+        }
+
+      }
+    }
+
+  }
+}
+
+.product-details {
+  padding-top: 10px;
+
+  .right-column {
+    padding-left: 30px;
+
+    @media #{$medium-and-down}{
+      padding-left: 15px;
+    }
+  }
+
+  .offer {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d4d4d4;
+
+    a {
+      color: #212121;
+    }
+
+    .btn {
+
+      font-size: 13px;
+      padding: 0 15px;
+      text-transform: initial;
+      width: 100%;
+      background-color: $productMultiOfferBg;
+      color: $productMultiOfferText;
+
+      i {
+        font-size: 13px;
+        padding-left: 5px;
+      }
+    }
+
+    h5 {
+      font-size: $productShopListProductNameFs;
+      height: 2.2em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 6px;
+      color: $productShopListProductName;
+    }
+
+    .shop {
+      line-height: 30px;
+      padding: 0;
+      margin: 0 auto;
+      max-height: 30px;
+
+      small {
+        font-size: $productShopListShopRatingFs;
+        color: $productShopListShopRating;
+        line-height: 1em;
+        display: inline-block;
+        padding: 0;
+        margin: 0 auto;
+        vertical-align: top;
+        width: 200px;
+        padding-top: 11px;
+        text-align: right;
+        padding-right: 10px;
+      }
+
+      img {
+        max-height: 30px;
+      }
+    }
+
+    p.price {
+      font-size: $productShopListProductPriceFs;
+      color: $productShopListProductPrice;
+      padding: 0;
+      margin: 0;
+      margin-bottom: 12px;
+    }
+  }
+
+  #offersContainer, #descriptionContainer {
+    margin: 0 auto;
+    background-color: $tabsContainerBg;
+  }
+
+  #descriptionContainer {
+    font-size: $productDescriptionFs;
+    line-height: 1.2em;
+    color: $productDescription;
+    padding: 15px;
+
+    h1 {
+      font-size: 2em;
+    }
+    h2 {
+      font-size: 1.8em;
+    }
+    h3 {
+      font-size: 1.6em;
+    }
+    h4 {
+      font-size: 1.3em;
+    }
+    h5, h6 {
+      font-size: 1.1em;
+    }
+
+  }
+
+  .top-tabs {
+    position: relative;
+
+    .tabs {
+      background-color: transparent;
+      border-bottom: 1px solid #d4d4d4;
+
+      li {
+        border-bottom: 1px solid #d4d4d4;
+
+        a {
+          color: $tabsTextColor;
+
+          &.active {
+            color: $tabsActiveTextColor;
+            background-color: $tabsContainerBg;
+          }
+        }
+      }
+
+      .indicator {
+        background-color: $tabsActiveBorderColor;
+      }
+    }
+
+    .options {
+      width: 38px;
+      position: absolute;
+      right: 15px;
+      top: -4px;
+
+      @media #{$medium-and-down}{
+        top: -50px;
+      }
+    }
+  }
+
+}
+
+/* homepage card */
+.card {
+  border-radius: 0;
+  background-color: $cardBgColor;
+  font-size: 15px;
+
+  .card-image {
+    padding: 20px 20px;
+  }
+  .card-content, .card-reveal {
+    background-color: $cardBgColor;
+    padding-bottom: 0;
+    border-radius: 0;
+
+    .card-title {
+      font-size: $cardTitleFs;
+      line-height: 1em !important;
+      max-height: 2.05em;
+      height: 2.05em;
+      overflow: hidden;
+      width: 100%;
+      display: block;
+      position: relative;
+      padding-right: 25px;
+      color: $cardTextColor !important;
+      font-weight: 100 !important;
+
+      .material-icons.right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 15px;
+        color: $cardMoreCloseBtnColor;
+
+        &.close {
+          width: auto;
+        }
+      }
+
+    }
+
+    p {
+      color: $cardTextColor;
+      font-size: $cardDescriptionFs;
+      line-height: 1.2em;
+      font-weight: 100;
+      height: 10.8em;
+      overflow: hidden;
+    }
+
+  }
+
+  .card-action {
+    padding-top: 10px;
+    border-top: 0;
+
+    .price {
+      font-size: $cardPriceFs;
+      padding-bottom: 10px;
+      display: block;
+      color: $cardPriceColor;
+    }
+
+    a.btn {
+      background-color: $cardBgButtonColor;
+      color: $cardTextButtonColor;
+      font-size: $cardButtonFs;
+      text-transform: initial;
+    }
+
+    p {
+      padding: 0;
+      margin: 0 auto;
+      width: 100%;
+      color: $cardTextColor;
+
+      a {
+        width: 100%;
+      }
+    }
+  }
+
+}
+
+#products-similar-prev, #products-similar-next, #products-top-prev, #products-top-next {
+  background-color: $productPromoNavBgColor;
+  color: $productPromoNavTextColor;
+  padding: 0 10px !important;
+}
+
+#dropdownMenu.dropdown-content {
+  li {
+    min-height: 0;
+    line-height: 22px;
+    a {
+      padding: 10px;
+      color: $dropdownMenuColor;
+    }
+  }
+
+}
+
+/* page - no results */
+#noResults {
+  .category-details {
+
+    h1 {
+      font-size: 34px;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .chip {
+      vertical-align: top;
+      margin-top: 5px;
+
+      .btn-flat.close {
+        padding-right: 0;
+        line-height: 1em;
+        padding-left: 0;
+        height: 32px;
+        text-align: center;
+        margin-left: 10px;
+
+        i {
+          padding-left: 0;
+        }
+      }
+    }
+
+  }
+
+  .alert.alert-dismissable.alert-danger {
+    background-color: $alertBoxBgColor;
+    color: $alertBoxTextColor;
+    padding: 10px 15px;
+
+    .subtitle {
+      font-size: 24px;
+      padding: 0;
+      margin: 0 auto;
+    }
+  }
+}
+
+/* page footer */
+footer.page-footer {
+  background-color: $footerBgColor;
+  color: $footerTextColor;
+
+  h5 {
+    font-size: $footerHeaderFs;
+  }
+
+  p {
+    font-size: $footerDescriptionFs;
+  }
+
+  .footer-copyright {
+    color: $coopyrightTextColor;
+    font-size: $footerCopyrightFs;
+    a {
+      color: $coopyrightTextColor;
+    }
+  }
+}
+
+/* mobile menu */
+.side-nav {
+  background-color: $mobileMenuBgColor;
+
+  .navbar-header {
+    background-color: $mobileMenuHeaderBgColor;
+    span {
+      color: $mobileMenuHeaderTextColor;
+      font-size: 20px;
+      padding: 0 15px;
+    }
+  }
+
+  a {
+    color: $mobileMenuLinkColor;
+
+    &.active {
+      background-color: $mobileMenuActiveLinkBgColor !important;
+      color: $mobileMenuActiveLinkColor !important;
+    }
+  }
+
+  .dropdown-content {
+    background-color: $mobileDropdownListBgColor !important;
+    a {
+      color: $mobileDropdownListLinkColor !important;
+    }
+  }
+
+}
+
+#products-similar, #products-top {
+  .product-wrapper-grid {
+
+    h5.title {
+      font-size: $productTopSimilarNameFs !important;
+    }
+
+    .price {
+      span.price {
+        font-size: $productTopSimilarPriceFs !important;
+      }
+    }
+
+    .btn {
+      font-size: $productTopSimilarBtnFs !important;
+    }
+  }
+}
+
+#modal-preloader {
+  display: none;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 3;
+  background-color: #fffc;
+
+  img {
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+  }
+}
+
+#productModal {
+  background-color: $modalBgColor;
+
+  .product-wrapper-grid .product.normal {
+    background-color: $modalProductBgColor;
+  }
+
+  section {
+    padding: 30px 15px;
+    background-color: #eceff1;
+
+    h1 {
+      padding-bottom: 20px;
+    }
+
+    .options {
+      height: 50px;
+
+      a {
+        margin-bottom: 10px;
+      }
+    }
+
+    .features {
+      text-align: left;
+      padding-top: 10px;
+      margin-bottom: 0;
+
+      li {
+        display: block;
+        font-size: 14px;
+        line-height: 22px;
+        text-align: left;
+        border-left: 0;
+        padding-left: 0;
+        color: $productDetailsTextColor;
+
+        em {
+          color: $productDetailsSpecTextColor;
+        }
+      }
+    }
+
+    .bx-wrapper {
+      margin-bottom: 10px;
+    }
+
+    .offer {
+      border-bottom: 0;
+      border-top: 1px solid #d4d4d4;
+      background-color: $modalOfferBgColor;
+    }
+  }
+
 }

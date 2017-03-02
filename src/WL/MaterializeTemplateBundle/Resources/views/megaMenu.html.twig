@@ -1,0 +1,84 @@
+<div id="navbarfull">
+        <ul class="nav navbar-nav hide-on-med-and-down">
+        {% for menuLink in menu_main.menuLinks %}
+            {% if menuLink.subLinks|length>1 %}
+                <li class="{% if breadcrumbs and menuLink.name == breadcrumbs[0].title %} active{% endif %}">
+                    <a href="#" class="dropdown-button " data-activates="dropdown{{ loop.index }}">{{ menuLink.name }} <i class="material-icons right">arrow_drop_down</i></a>
+                    <div class="dropdown-content" id="dropdown{{ loop.index }}">
+                        <ul class="">
+                            <li>
+                                <div class="row">
+
+                                    <div class="col l3 m3 s3 left-col">
+
+                                        <ul class="dropdown-menu dropdown-menu-inner">
+                                            <li class="dropdown-header">Kategorie</li>
+                                            {% for subLink in menuLink.subLinks %}
+                                                <li{% if category is defined and category.title == subLink.name %} class="active"{% endif %}><a href="{{  url('category', { 'categoryUrlWithFilters': subLink.url}) }}" title="{{ subLink.name|raw }}">{{ subLink.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+
+                                    </div>
+                                    {% if menuLink.topProducts|length>0 %}
+                                        <div class="col l9 m10 s9 right-col">
+
+                                            <div class="row">
+                                                <div class="col l12 m12 s12">
+                                                    <span class="dropdown-header dropdown-header-no-list">Popularne produkty</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                {% for product in menuLink.topProducts %}
+                                                    <div class="col l4 m4 s4">
+                                                        <a {{ product|productUrlAttr }}>
+                                                            <div class="product">
+                                                                <div class="image">
+                                                                    <img class='img-responsive' src="{{ nokaut_img_domain ~ nokaut_photo_url.prepare(product.photoId, '90x90', product.title) }}" />
+                                                                </div>
+                                                                <span class="price">{% if product.clickUrl is empty %}od {% endif %}{{ product.prices.min|number_format(2, ',', '') }} PLN</span>
+                                                                <h5 class="title">{{ product.title|raw }}</h5>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            {% else %}
+                <li {% if breadcrumbs and menuLink.name == breadcrumbs[0].title %}class="active"{% endif %}>
+                    <a href="{{  url('category', { 'categoryUrlWithFilters': menuLink.subLinks[0].url}) }}">{{ menuLink.name }}</b></a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+
+    <ul class="side-nav" id="mobile-menu">
+        <li><a href="">Strona główna</a></li>
+        {% for menuLink in menu_main.menuLinks %}
+            {% if menuLink.subLinks|length>1 %}
+                <li class="{% if breadcrumbs and menuLink.name == breadcrumbs[0].title %} active{% endif %}">
+                    <a href="#" class="dropdown-button " data-activates="dropdownMobile{{ loop.index }}">{{ menuLink.name }} <i class="material-icons right">arrow_drop_down</i></a>
+                    <div class="dropdown-content" id="dropdownMobile{{ loop.index }}">
+                        <ul class="dropdown-menu dropdown-menu-inner">
+                            {% for subLink in menuLink.subLinks %}
+                                <li{% if category is defined and category.title == subLink.name %} class="active"{% endif %}><a href="{{  url('category', { 'categoryUrlWithFilters': subLink.url}) }}" title="{{ subLink.name|raw }}">{{ subLink.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+            {% else %}
+                <li {% if breadcrumbs and menuLink.name == breadcrumbs[0].title %}class="active"{% endif %}>
+                    <a href="{{  url('category', { 'categoryUrlWithFilters': menuLink.subLinks[0].url}) }}">{{ menuLink.name }}</b></a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+</div>

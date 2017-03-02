@@ -9,20 +9,10 @@
 
 {% block stylesheets %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
-{#
-    <link rel="stylesheet" href="{{ asset('bundles/wlapp/css/bootstrap.css') }}" media="screen">
-    <link rel="stylesheet" href="{{ asset('bundles/wlapp/css/ecommerce-theme-bootstrap.css') }}">
-#}
-
     <link rel="stylesheet" href="{{ asset('bundles/wlapp/css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/wlapp/css/jquery.bxslider.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/wlapp/css/theme-bootstrap.css') }}">
-
-
-
     <link rel="stylesheet" href="{{ asset('bundles/wlmaterializetemplate/css/materialize.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 
     <link href="{{ asset('bundles/wlapp/css/jquery.growl.css') }}" rel="stylesheet" type="text/css" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -50,7 +40,7 @@
             return false;
         }
         $(function(){
-            $('#searchFrom').on('submit', function () {
+            $('#searchFromCon').on('submit', function () {
                 return search()
             });
             $('#buttonSearch').on('click', function () {
@@ -68,159 +58,54 @@
 
             ga('create', '{{ google_analytics_id }}', 'auto');
             ga('send', 'pageview');
-
         </script>
     {% endif %}
 
 {% endblock %}
 
 {% block body %}
-{#
-    <div class="navbar navbar-default navbar-fixed-top yamm">
-    <div class="container">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Porownywarka</a>
-    </div>
-    <div class="navbar-collapse collapse navbar-responsive-collapse">
 
-    {% include menu_main.template %}
-
-    <form id="searchFrom" class="navbar-form navbar-right">
-        <div class="input-group input-group-with-btn">
-            <input id="phraseInput" type="text" class="form-control input-lg" value="{% if phrase is defined %}{{ phrase }}{% endif %}" placeholder="Szukam...">
-                <span class="input-group-btn">
-                  <button id="buttonSearch" class="btn btn-link" type="button"><i class="fa fa-search"></i></button>
-                </span>
-        </div>
-    </form>
-    </div>
-    </div>
-    </div>
-#}
-
-
-
-
-
-      <nav class="container">
-          <div class="nav-wrapper">
-              <div class="logotyp">
-                  <a href="#" class="brand-logo">Logo</a>
-              </div>
-
-              {% include menu_main.template %}
-
-
-              <div class="right">
-                  <form>
-                      <div class="input-field">
-                          <input id="search" type="search" required>
-                          <label for="search"><i class="material-icons">search</i></label>
-                          <i class="material-icons">close</i>
-                      </div>
-                  </form>
-              </div>
-
-
-          </div>
-      </nav>
-
-
-{#
-    <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!">one</a></li>
-        <li><a href="#!">two</a></li>
-        <li class="divider"></li>
-        <li><a href="#!">three</a></li>
-    </ul>
-
-          <div class="container">
-              <div class="row">
-                  <div class="col s12">
-                      <ul class="tabs">
-                          <li class="tab col s3"><a href="#test1">Test 1</a></li>
-                          <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
-                          <li class="tab col s3"><a href="#test4">Test 4</a></li>
-                      </ul>
-                  </div>
-                  <div id="test1" class="col s12">Test 1</div>
-                  <div id="test2" class="col s12">Test 2</div>
-                  <div id="test4" class="col s12">Test 4</div>
-              </div>
-          </div>
-#}
-
-
-    {#
-        <div class="container top">
-
-            {% block topContent %}
-                {% if breadcrumbs is defined %}
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <ul class="breadcrumb">
-                            <li><a href="/">Porównywarka</a></li>
-                            {% for crumb in breadcrumbs %}
-                                {% if loop.last or crumb.url is null %}
-                                    <li class="active">{{ crumb.title|raw }}</li>
-                                {% else %}
-
-                                    <li><a href="{{ crumb.url }}">{{ crumb.title|raw }}</a></li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                {% endif %}
-            {% endblock %}
-
-            {% block content %}
-
-            {% endblock %}
-        </div>
-
-        #}
-    {#
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5">
-                        <h5>O nas</h5>
-                        <p>Porównywarka.co to serwis pozwalający na porównanie cen w najlepszych sklepach internetowych w Polsce. Został stworzony, by ułatwić użytkownikom Internetu znalezienie najniższych cen i wygodne e-zakupy. Porównaj oferty kilku tysięcy sklepów internetowych.</p>
-                    </div>
-                    <div class="col-md-7">
-                        <h5>Dla sklepów</h5>
-                        <p>Chcesz, aby znalazła się tutaj również oferta Twojego sklepu? Operatorem danych dla serwisu Porównywarka jest Nokaut.pl, porównywarka cen i sieć reklamowa odwiedzana przez kilka milionów użytkowników każdego miesiąca. Skontaktuj się skorzystaj z kontakt@nokaut.pl.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        Copyright © 2014. Wszystkie prawa zastrzeżone.
-                        <a href="{{ url('map_categories') }}">Mapa kategorii</a>
-                    </div>
+    <header>
+        <nav class="nav-extended">
+            <div class="nav-wrapper">
+                <div class="container">
+                    <a href="/" class="brand-logo">Porownywarka</a>
+                    <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+                    {% include menu_main.template %}
                 </div>
             </div>
-        </footer>
+        </nav>
+    </header>
 
-        <div id="modal-preloader" class="modal-backdrop fade in text-center" style="display:none;padding-top:100px;"><img src="{{ asset('/bundles/wlapp/images/progress-circle-info.svg') }}"></div>
-    #}
+    <div class="searchBox">
+        <div class="search-btn">
+            <button class="waves-effect waves-circle  btn-floating btn-large" href="#" data-activates='test'>
+                <i class="material-icons">search</i>
+            </button>
+        </div>
 
+        <div class="search-con">
+            <nav>
+                <div class="nav-wrapper">
+                    <form id="searchFromCon" >
+                        <div class="input-field">
+                            <input id="phraseInput" type="search" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons close">close</i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
 
-
-
-
-    <div class="container top">
-        {% block topContent %}
-            {% if breadcrumbs is defined %}
-                <div class="row">
-                    <nav>
-                        <div class="nav-wrapper">
-                            <div class="col s12">
+    {% block topContent %}
+        {% if breadcrumbs is defined %}
+            <nav id="breadcrumbs">
+                <div class="nav-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col l12">
                                 <a href="/"  class="breadcrumb">Porównywarka</a>
                                 {% for crumb in breadcrumbs %}
                                     {% if loop.last or crumb.url is null %}
@@ -231,20 +116,18 @@
                                 {% endfor %}
                             </div>
                         </div>
-                    </nav>
+                    </div>
                 </div>
+            </nav>
+        {% endif %}
+    {% endblock %}
 
-            {% endif %}
-        {% endblock %}
-
+    <div class="container container-fluid page">
         {% block content %}
-
         {% endblock %}
-
     </div>
 
-
-    <footer class="page-footer grey lighten-2">
+    <footer class="page-footer">
         <div class="container">
             <div class="row">
                 <div class="col l5 s12">
@@ -258,17 +141,14 @@
             </div>
         </div>
         <div class="footer-copyright">
-            <div class="container grey-text">
+            <div class="container">
                 Copyright © 2014. Wszystkie prawa zastrzeżone.
-                <a class="grey-text right" href="{{ url('map_categories') }}">Mapa kategorii</a>
+                <a class="right" href="{{ url('map_categories') }}">Mapa kategorii</a>
             </div>
         </div>
     </footer>
 
-    <div id="modal-preloader" class="modal-backdrop fade in text-center" style="display:none;padding-top:100px;"><img src="{{ asset('/bundles/wlapp/images/progress-circle-info.svg') }}"></div>
-
-
-
+    <div id="modal-preloader"><img src="{{ asset('/bundles/wlapp/images/progress-circle-info.svg') }}"></div>
 {% endblock %}
 
 
@@ -277,9 +157,27 @@
     <script src="{{ asset('bundles/wlapp/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('bundles/wlapp/js/jquery.bxslider.min.js') }}"></script>
     <script src="{{ asset('bundles/wlapp/js/jquery.growl.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/wlapp/js/common.js') }}"></script>
+    <script src="{{ asset('bundles/wlmaterializetemplate/js/common.js') }}"></script>
 
 
     <script src="{{ asset('bundles/wlmaterializetemplate/js/materialize.js') }}"></script>
+
+    <script>
+        $('.search-btn, #searchFromCon .close').click(function(){
+            var widthBox = $('.search-con').width();
+            if(widthBox == 0) {
+                $('.search-con').animate({width: 300 + 'px'},300);
+                $('#phraseInput').focus();
+            }else{
+                $('.search-con').animate({width: 0},300);
+            }
+        });
+
+        $('#phraseInput').focusout(function() {
+                $('.search-con').animate({width: 0},250);
+            });
+
+        $(".button-collapse").sideNav();
+    </script>
 
 {% endblock %}

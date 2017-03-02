@@ -1,0 +1,56 @@
+{% if product.clickUrl is not empty %}
+    {% set productUrl = product|click %}
+{% else %}
+    {% set productUrl = path('product', {'productUrl': product.url}) %}
+{% endif %}
+<div>
+    <div class="col l12 m12 s12 product-wrapper-grid">
+
+        <div class="product normal">
+            <a {{ product|productUrlAttr }}>
+                <div class="image-thumbnail">
+                    <img class="img-responsive" title="{{ product.title|raw }}"
+                         src="{{ nokaut_img_domain ~ nokaut_photo_url.prepare(product.photoId, '500x500', product.title) }}"/>
+                </div>
+            </a>
+
+            <div class="product-details">
+                <div class="row">
+
+                    <div class="col l12 m12 s12 title-features">
+                        <a {{ product|productUrlAttr }} class="mainTextColor">
+                            <h5 class="title">{{ product.title|raw }}</h5>
+                        </a>
+
+                        <div class="product-details-popup center-align">
+                            {% if product.descriptionShort %}
+                                <a {{ product|productUrlAttr }} class="tooltipped" data-position="left" data-delay="50" data-tooltip="{{ product.descriptionShort|raw }}" >
+                                    <i class="fa fa-align-justify"></i>
+                                </a>
+                            {% endif %}
+                            {% set savePercent = helper_price.getSavePercent(product.prices) %}
+                            {% if savePercent > 0 %}
+                                <a {{ product|productUrlAttr }} class="tooltipped" data-position="left" data-delay="50" data-tooltip="Na tym produkcie możesz zaoszczędzić aż  {{ savePercent }}%">
+                                    <i class="fa fa-tag"></i>
+                                </a>
+                            {% endif %}
+                            {% if product.clickUrl is not empty %}
+                                <a {{ product|productUrlAttr(false) }}><i class="fa fa-link"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col l12 s12 price">
+                        <a {{ product|productUrlAttr }}>
+                            <span class="price">{% if product.clickUrl is empty %}od {% endif %}{{ product.prices.min|number_format(2,',',' ') }} PLN</span>
+                            <span class="btn waves-effect btn-small">{% if product.clickUrl is not empty %}Zobacz w sklepie{% else %}Porównaj oferty{% endif %}
+                                <i class="fa fa-angle-right"></i>
+                                    </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,344 @@
+{% extends "WLAppBundle::layout.html.twig" %}
+
+{% block title %}
+    {% spaceless %}
+        {{ metadataTitle }} - {{ parent() }}
+    {% endspaceless %}
+{% endblock %}
+
+{% block desc %}{{ category.description|striptags }}{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+
+    <link rel="canonical" href="{{ url(route, { (routeArgument): canonical}) }}"/>
+{% endblock %}
+
+{% block javascriptsTop %}
+    {{ parent() }}
+    <script type="text/javascript">
+        function filterRanges(template, inputFromId, inputToId) {
+            var valueFrom = $('#' + inputFromId).val();
+            var valueTo = $('#' + inputToId).val();
+            if (!valueFrom && !valueTo) {
+                alert('Proszę podać wartości w polach koło przycisku "zastosuj"');
+                return;
+            }
+            var url = template.replace('%25s~%25s', parseRangeValue(valueFrom) + '~' + parseRangeValue(valueTo));
+            document.location.href = url;
+        }
+
+        function parseRangeValue(inputValue) {
+            var value = parseFloat(inputValue);
+            return value ? value : '';
+        }
+    </script>
+
+{% endblock %}
+
+{% macro filterView(filter, includeRange, boxId, route, routeArgument, isActive = false) %}
+    <div class="panel panel-default category-filter">
+
+        <ul class="collapsible" data-collapsible="accordion">
+            <li class="active">
+                <div class="collapsible-header active">
+                    <h4 class="mainTitleColor">{{ filter.name }}</h4>
+                    <i class="filter-open fa fa-angle-down"></i>
+                    <i class="filter-close fa fa-angle-up"></i>
+                </div>
+
+                <div class="collapsible-body">
+                    <div class="collection">
+                        {% set selectedValue = false %}
+                        {% for value in filter %}
+                            {% if value.isFilter %}
+                                {% set selectedValue = value %}
+                            {% endif %}
+                            {% if value.isFilter %}
+                                <a class="collection-item active-coll active-category" {% if value.isNoFollow %}rel="nofollow" {% endif %}href="{% if value.total>0 %}{{ url(route, { (routeArgument) : value.url}) }}{%  else %}#{%  endif %}">
+                                    {{ value.name|raw }} {{ filter.unit }} <span class="new badge" data-badge-caption="">{{ value.total }}</span>
+                                </a>
+                            {% else %}
+                                <a class="collection-item active-coll mainTextColor" {% if value.isNoFollow %}rel="nofollow" {% endif %}href="{% if value.total>0 %}{{ url(route, { (routeArgument) : value.url}) }}{%  else %}#{%  endif %}">
+                                    {{ value.name|raw }} {{ filter.unit }} <span class="new badge" data-badge-caption="">{{ value.total }}</span>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    {% if includeRange %}
+                        <div class="form-price">
+                            <form class="form" role="form">
+                                <div class="row">
+                                    <div class="input-field col s12 right-align">
+                                        <input id="{{ boxId }}-range-from" value="{{ selectedValue ? selectedValue.min : '' }}" type="text" class="box-inline" placeholder="od">
+                                        <div class="box-inline">-</div>
+                                        <input id="{{ boxId }}-range-to" value="{{ selectedValue ? selectedValue.max : '' }}" type="text" class="box-inline" placeholder="do">
+                                        <div class="box-inline mainTextColor">PLN</div>
+                                    </div>
+                                    <div class="col s12 text-right filter-submit">
+                                        <button onclick="filterRanges('{{ url(route, { (routeArgument): filter.urlInTemplate|raw}) }}', '{{ boxId }}-range-from', '{{ boxId }}-range-to')" class="btn waves-effect" type="button">zastosuj</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </li>
+        </ul>
+    </div>
+{% endmacro %}
+
+
+{% block content %}
+    <div class="row category">
+
+        <div class="col s12 m4 l3 category-filters">
+            <div class="panel-group" id="accordion">
+
+                {% if not subcategories.isExcluded or subcategories.parentCategory %}
+                    <div class="panel panel-default category-filter">
+
+
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li class="active">
+                                <div class="collapsible-header active">
+                                    <h4 class="mainTitleColor">Kategorie</h4>
+                                    <i class="filter-open fa fa-angle-down"></i>
+                                    <i class="filter-close fa fa-angle-up"></i>
+                                </div>
+
+                                <div class="collapsible-body" style="display:block;">
+                                    <div class="collection">
+                                        {% if subcategories.parentCategory %}
+                                            {% if subcategories.parentCategory.url == '/' %}
+                                                {% set parentCategoryUrl = url('wl_homepage') %}
+                                            {% else %}
+                                                {% set parentCategoryUrl = url(route, { (routeArgument) : subcategories.parentCategory.url}) %}
+                                            {% endif %}
+                                            <a href="{{ parentCategoryUrl }}" class="collection-item active-coll active-category">
+                                                <span class="new badge" data-badge-caption="">{{ products.metadata.total }}</span> {{ category.title|raw }} <i class="fa fa-level-up"></i>
+                                            </a>
+                                        {% endif %}
+                                        {% for category in subcategories if not category.isFilter %}
+                                            <a href="{{ url(route, { (routeArgument) : category.urlIn}) }}" class="collection-item mainTextColor">
+                                                {{ category.name|raw }} <span class="new badge" data-badge-caption="">{{ category.total }}</span>
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+
+
+                    </div>
+                {% endif %}
+
+
+                {{ _self.filterView(priceFilters, true, '-prices', route, routeArgument, true ) }}
+                {{ _self.filterView(producersFilters, false, '-producers', route, routeArgument) }}
+
+                 {% for filter in propertiesFilters if not filter.isExcluded %}
+                     {{ _self.filterView(filter, false, '-properites-' ~ loop.index, route, routeArgument) }}
+                 {% endfor %}
+
+
+                {% if category is defined and category.description %}
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li class="active">
+                            <div class="collapsible-header active">
+                                <h4>Opis</h4>
+                                <i class="filter-open fa fa-angle-down"></i>
+                                <i class="filter-close fa fa-angle-up"></i>
+                            </div>
+
+                            <div class="collapsible-body description mainTextColor">
+                                {{ category.description|raw }}
+                            </div>
+                        </li>
+                    </ul>
+                {% endif %}
+
+            </div>
+        </div>
+
+
+        <div class="col s12 m8 l9 category-filters right-column">
+
+            <div class="row row-list">
+                <div class="col l11 m11 s11 title">
+                    <h1 class="title-page">
+                        <span class="name">{% if h1 %}<strong class="mainTitleColor">{{ h1|raw }}</strong>{% endif %}<small class="mainTextColor"> {{ products.metadata.total|varietyProducts }}</small>
+                        </span>
+
+                        {% if products.phrase is not null and route == 'search' and products.phrase.value %}
+                            <span>
+                                <span class="badge-name">szukasz:</span>
+                                <span class="chip">
+                                    <span>{{ products.phrase.value|raw }}</span>
+                                    <button type="button" onclick="document.location.href='{{ selectedCategoriesFilters is not defined or selectedCategoriesFilters|length == 0 or products.phrase.urlOut == '' or products.phrase.urlOut == '/' ? '/' : url('category', { 'categoryUrlWithFilters': products.phrase.urlOut }) }}'" class="btn-flat close"><i class="close material-icons">close</i></button>
+                                </span>
+                            </span>
+                        {% endif %}
+                        {% for filter in selectedFilters if filter is not empty %}
+                            <span>
+                                <span class="badge-name">{{ filter.name }}:</span>
+                                    {% for value in filter %}
+                                        <span class="chip">
+                                            <span>{{ value.name|raw }} {{ filter.unit }}</span>
+                                            <button type="button" onclick="document.location.href='{{ url(route, { (routeArgument): value.url }) }}'" class="btn-flat close"><i class="close material-icons">close</i></button>
+                                        </span>
+                                    {% endfor %}
+                            </span>
+                        {% endfor %}
+                    </h1>
+                </div>
+
+
+                <div class="col l1 m1 s1 options">
+
+                    <a href="#!" class="dropdown-button waves-effect waves-circle  btn-floating secondary-content" data-activates='dropdown-options'>
+                        <i class="material-icons">menu</i>
+                    </a>
+
+                    <div id="dropdown-options" class="dropdown-content" data-constrainwidth="false">
+                        <ul>
+                            <li class="dropdown-header">Widok</li>
+                            <li id="category-view-list"><a href="#list"><i class="fa fa-th-list"></i> lista</a></li>
+                            <li id="category-view-grid" class="active"><a href="#box"><i class="fa fa-th"></i> kafle</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Sortowanie</li>
+
+                            {% macro additionalSortIcon(sortName) %}
+                                {% if sortName == 'domyślne' %}
+                                    {{ 'fa-long-arrow-down' }}
+                                {% elseif sortName == 'od popularnych' %}
+                                    {{ 'fa-sort-amount-desc' }}
+                                {% elseif sortName == 'od mało popularnych' %}
+                                    {{ 'fa-sort-amount-asc' }}
+                                {% elseif sortName == 'od a do z' %}
+                                    {{ 'fa-sort-alpha-asc' }}
+                                {% elseif sortName == 'od z do a' %}
+                                    {{ 'fa-sort-alpha-desc' }}
+                                {% elseif sortName == 'od najtańszych' %}
+                                    {{ 'fa-sort-numeric-asc' }}
+                                {% elseif sortName == 'od najdroższych' %}
+                                    {{ 'fa-sort-numeric-desc' }}
+                                {% endif %}
+                            {% endmacro %}
+
+                            {% for sort in sorts %}
+                                {% if sort.isFilter %}
+                                    <li class="active"><a rel="nofollow" href="{{ url(route, { (routeArgument) : sort.url}) }}"><i class="fa {{ _self.additionalSortIcon(sort.name) }}"></i> {{ sort.name }}</a></li>
+                                {% else %}
+                                    <li><a rel="nofollow" href="{{ url(route, { (routeArgument) : sort.url}) }}"><i class="fa {{ _self.additionalSortIcon(sort.name) }}"></i> {{ sort.name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="row category-products">
+                {% for product in products %}
+                    <!---- product starts here ---->
+                    <div class="col l4 m6 s12 product-wrapper-grid">
+                        <div class="product normal">
+                            <a {{ product|productUrlAttr }} class="poduct-link"></a>
+                            <div class="image-thumbnail">
+                                <img src="{{ nokaut_img_domain ~ nokaut_photo_url.prepare(product.photoId, '500x500', product.title) }}" title="{{ product.title|raw }}" />
+                            </div>
+
+                            <div class="product-details-popup center-align">
+                                {% if product.descriptionShort %}
+                                    <a {{ product|productUrlAttr }} class="tooltipped" data-position="left" data-delay="50" data-tooltip="{{ product.descriptionShort|raw }}" >
+                                        <i class="fa fa-align-justify"></i>
+                                    </a>
+                                {% endif %}
+                                {% set savePercent = helper_price.getSavePercent(product.prices) %}
+                                {% if savePercent > 0 %}
+                                    <a {{ product|productUrlAttr }} class="tooltipped" data-position="left" data-delay="50" data-tooltip="Na tym produkcie możesz zaoszczędzić aż  {{ savePercent }}%">
+                                        <i class="fa fa-tag"></i>
+                                    </a>
+                                {% endif %}
+                                {% if product.clickUrl is not empty %}
+                                    <a {{ product|productUrlAttr(false) }}><i class="fa fa-link"></i></a>
+                                {% endif %}
+                            </div>
+
+                            <div class="product-details">
+                                <div class="row">
+                                    <div class="col l12 m12 s12 title-features">
+                                        <h5 class="title">{{ product.title|raw }}</h5>
+
+                                         <ul class="features">
+                                            {% for property in product.properties %}
+                                                <li>{{ property.name|raw }}:
+                                                    <em>{% include '@WLApp/Product/property.html.twig' %}</em>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+
+                                    </div>
+                                    <div class="col l12 s12 price">
+                                        <a {{ product|productUrlAttr }}><span class="price">{% if product.clickUrl is empty %}od {% endif %}{{ product.prices.min|number_format(2,',',' ') }} PLN</span></a>
+                                        <a {{ product|productUrlAttr }} class="btn waves-effect">{% if product.clickUrl is not empty %}Przejdź do sklepu{% else %}Porównaj oferty{% endif %} <i class="fa fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---- product ends here ---->
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                <div class="col m12 center-align" data-links='keep-view'>
+                    {% include '@WLMaterializeTemplate/paginator.html.twig' %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/wlapp/js/isotope.pkgd.min.js') }}"></script>
+
+    {% if category is defined %}
+    <script type="text/javascript">
+        $(function() {
+            if('{{ category.viewType }}' == "list") {
+                $( "#category-view-list" ).trigger( "click" );
+            } else {
+                $( "#category-view-grid" ).trigger( "click" );
+            }
+
+
+        });
+
+        var hideFilters;
+        (hideFilters = function(){
+            if($(document).width() <= 992) {
+                $('.collapsible li').removeClass('active');
+                $('.collapsible .collapsible-header').removeClass('active');
+                $('.collapsible .collapsible-body').hide();
+            }
+        })();
+
+        $( window ).resize(function() {
+            hideFilters();
+        });
+    </script>
+    {% endif %}
+{% endblock %}
+

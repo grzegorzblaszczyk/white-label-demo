@@ -9,8 +9,33 @@
 {% endblock %}
 
 {% block content %}
+<div class="row">
 
+    {% for products in productsGroupCategory %}
+        {% for product in products %}
+            <div class="col s12 m4 l3">
+                <div class="card sticky-action">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator img-responsive" src="{{ nokaut_img_domain ~ nokaut_photo_url.prepare(product.photoId, '500x500', product.title) }}"/>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">{{ product.title|raw }}<i class="material-icons right">more_vert</i></span>
+                     </div>
+                    <div class="card-action">
+                        <span class="price center-align">{{ product.prices.min|number_format(2,',',' ') }} PLN</span>
+                        <p><a class="btn waves-effect" {{ product|productUrlAttr }}>zobacz oferte</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">{{ product.title|raw }}<i class="material-icons right close">close</i></span>
+                        {% if product.descriptionShort %}
+                            <p>{{ product.descriptionShort|raw }}</p>
+                        {% endif %}
+                    </div>
 
-   <h1>Materialize123</h1>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
 
+</div>
 {% endblock %}

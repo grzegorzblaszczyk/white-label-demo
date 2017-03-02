@@ -1,0 +1,68 @@
+{% set offer = offers.item(0) %}
+{% set singleOffert = true %}
+
+<div class="row product product-details">
+
+    <div class="col l4 m4 s12 gallery">
+        {% if product.photoIds|length > 0 %}
+            {% set photoId = product.photoIds[0] %}
+        {% else %}
+            {% set photoId = offer.photoId %}
+        {% endif %}
+        <a rel="nofollow" target="_blank" href="{{ offer|click }}">
+            <img class="img-responsive" src="{{ nokaut_img_domain ~ nokaut_photo_url.prepare(photoId, '500x500', product.title) }}" alt="{{ product.title }}">
+        </a>
+    </div>
+
+    <div class="col l8 m8 s12">
+        <div class="row top-details">
+
+            <div class="col l8 m8 s12">
+                <a rel="nofollow" target="_blank" href="{{ offer|click }}">
+                    <h1 class="title-page mainTitleColor">{{ product.title|raw }}y</h1>
+                </a>
+            </div>
+
+            <div class="col l4 m4 s12 right-align prices">
+                <a rel="nofollow" target="_blank" href="{{ offer|click }}">
+                    <p class="main-price">{{ offers.metadata.priceMin|number_format(2, ',', '') }} PLN</p>
+                </a>
+                <p><a rel="nofollow" target="_blank" href="{{ offer|click }}" class="btn waves-effect btn-small">Zobacz w sklepie <i class="fa fa-angle-right"></i></a></p>
+                <p class="pull-right">
+                    <a rel="nofollow" target="_blank" href="{{ offer|click }}">
+                        <img class="pull-right" src="{{ nokaut_img_domain ~ offer.shop.urlLogo }}" />
+                        <br>
+                        {% if offer.shop.opineoRating and offer.shop.opineoRating.ratingCount > 0 %}
+                            <small class="stars">
+                                Ocena&nbsp;sklepu:
+                                {% for i in 1..5 %}
+                                    {% if offer.shop.opineoRating and (offer.shop.opineoRating.rating/2) >= i %}
+                                        <i class="fa fa-star"></i>
+                                    {% elseif offer.shop.opineoRating and (offer.shop.opineoRating.rating/2)|round >= i %}
+                                        <i class="fa fa-star-half-o"></i>
+                                    {% else %}
+                                        <i class="fa fa-star-o"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            </small>
+                        {% endif %}
+                    </a>
+                </p>
+            </div>
+
+
+        </div>
+        <div class="lower row">
+            <div class="col l12 m12 s12 one-offer-details">
+                {% include '@WLApp/Product/properties.html.twig' %}
+            </div>
+        </div>
+
+        <div class="lower row" id="descriptionContainer">
+            <div class="col l12 m12 s12 description">
+                {{ product.descriptionHtml|raw }}
+            </div>
+        </div>
+
+    </div>
+</div>

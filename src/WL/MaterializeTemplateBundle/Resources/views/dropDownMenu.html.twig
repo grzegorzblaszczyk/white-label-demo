@@ -1,9 +1,15 @@
-<ul id="nav-mobile" class="left hide-on-med-and-down">
-    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Kategorie<i class="material-icons right">arrow_drop_down</i></a></li>
-</ul>
-
-<ul id="dropdown1" class="dropdown-content">
+<ul  id="dropdownMenu" class="dropdown-content">
     {% for menuLink in menu_main.menuLinks %}
         <li><a href="{{  url('category', { 'categoryUrlWithFilters': menuLink.url}) }}">{{ menuLink.name }}</a></li>
     {% endfor %}
 </ul>
+<ul class="right hide-on-med-and-down">
+    <li><a class="dropdown-button" href="#!" data-activates="dropdownMenu">Kategorie<i class="material-icons right">arrow_drop_down</i></a></li>
+</ul>
+<ul class="side-nav" id="mobile-menu">
+    <li class="navbar-header"><span>Kategorie:</span></li>
+    {% for menuLink in menu_main.menuLinks %}
+        <li><a href="{{  url('category', { 'categoryUrlWithFilters': menuLink.url}) }}">{{ menuLink.name }}</a></li>
+    {% endfor %}
+</ul>
+

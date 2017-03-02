@@ -1,0 +1,68 @@
+{% extends "WLAppBundle::layout.html.twig" %}
+
+{% block title %}
+    brak wyników - White Label Nokaut.pl
+{% endblock %}
+
+
+{% block head %}
+    {{ parent() }}
+
+    <link rel="canonical" href="{{ url(route, { (routeArgument): canonical}) }}"/>
+{% endblock %}
+
+
+{% block content %}
+    <div class="row category" id="noResults">
+        <div class="col l12 s12">
+
+            <div class="row category-details">
+                <div class="col s11 m11 l11">
+                    <h1>
+                        <span class="name"><small>0 produktów</small></span>
+                        {% if phrase is defined and phrase is not null and route == 'search'  %}
+                            <span>
+                                <span class="badge-name">szukasz:</span>
+                                <span class="chip">
+                                    <span>{{ phrase|raw }}</span>
+                                    <button type="button"  onclick="document.location.href='/'" class="btn-flat close"><i class="close material-icons">close</i></button>
+                                </span>
+                            </span>
+                        {% endif %}
+                        {% for filter in selectedFilters if filter is not empty %}
+                            <span>
+                                <span class="badge-name">{{ filter.name }}:</span>
+                                {% for value in filter %}
+                                    <span class="chip">
+                                        <span>{{ value.name }}</span>
+                                        <button type="button"  onclick="document.location.href='/'" class="btn-flat close"><i class="close material-icons">close</i></button>
+                                    </span>
+                                {% endfor %}
+                            </span>
+                        {% endfor %}
+                    </h1>
+                </div>
+                <div class="col s1 m1 l1 text-right">
+
+                </div>
+            </div>
+
+            <div class="row category-products">
+                <div class="col l12 s12 m12">
+                    <div class="alert alert-dismissable alert-danger">
+                        <h4>BRAK WYNIKÓW</h4>
+                        <p>Wśród milionów produktów nie znaleźliśmy żadnego, który odpowiadałby Twojemu zapytaniu.</p>
+                        <p class="subtitle">Co teraz?</p>
+                        <ul>
+                            <li>Wpisz inne słowa kluczowe w wyszukiwarce powyżej - może następnym razem się uda</li>
+                            <li>Zacznij poszukiwania od <a href="/">strony głównej</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+
