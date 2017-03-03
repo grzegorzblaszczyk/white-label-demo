@@ -1,10 +1,6 @@
 {% extends "WLAppBundle::layout.html.twig" %}
 
-{% block title %}
-    {% spaceless %}
-        {{ metadataTitle }} - {{ parent() }}
-    {% endspaceless %}
-{% endblock %}
+{% block title %}{{ metadataTitle }} - {{ parent() }}{% endblock %}
 
 {% block desc %}{{ category.description|striptags }}{% endblock %}
 

@@ -3,6 +3,7 @@
 {% set route = app.request.get('_route') %}
 {% set routeArgument = route == 'search' ? 'phrase' : 'categoryUrlWithFilters' %}
 
+
 {% block head %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
 {% endblock %}
@@ -69,7 +70,7 @@
         <nav class="nav-extended">
             <div class="nav-wrapper">
                 <div class="container">
-                    <a href="/" class="brand-logo">Porownywarka</a>
+                    <a href="/" class="brand-logo">{{ site_name }}</a>
                     <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
                     {% include menu_main.template %}
                 </div>
@@ -106,7 +107,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col l12">
-                                <a href="/"  class="breadcrumb">Porównywarka</a>
+                                <a href="/"  class="breadcrumb">{{ site_name }}</a>
                                 {% for crumb in breadcrumbs %}
                                     {% if loop.last or crumb.url is null %}
                                         <a class="breadcrumb" href="#">{{ crumb.title|raw }}</a>
@@ -132,17 +133,17 @@
             <div class="row">
                 <div class="col l5 s12">
                     <h5>O nas</h5>
-                    <p>Porównywarka.co to serwis pozwalający na porównanie cen w najlepszych sklepach internetowych w Polsce. Został stworzony, by ułatwić użytkownikom Internetu znalezienie najniższych cen i wygodne e-zakupy. Porównaj oferty kilku tysięcy sklepów internetowych.</p>
+                    <p>{{ site_name }} to serwis pozwalający na porównanie cen w najlepszych sklepach internetowych w Polsce. Został stworzony, by ułatwić użytkownikom Internetu znalezienie najniższych cen i wygodne e-zakupy. Porównaj oferty kilku tysięcy sklepów internetowych.</p>
                 </div>
                 <div class="col l7 s12">
                     <h5>Dla sklepów</h5>
-                    <p>Chcesz, aby znalazła się tutaj również oferta Twojego sklepu? Operatorem danych dla serwisu Porównywarka jest Nokaut.pl, porównywarka cen i sieć reklamowa odwiedzana przez kilka milionów użytkowników każdego miesiąca. Skontaktuj się skorzystaj z kontakt@nokaut.pl.</p>
+                    <p>Chcesz, aby znalazła się tutaj również oferta Twojego sklepu? Operatorem danych dla serwisu {{ site_name }} jest Nokaut.pl, porównywarka cen i sieć reklamowa odwiedzana przez kilka milionów użytkowników każdego miesiąca. Skontaktuj się skorzystaj z kontakt@nokaut.pl.</p>
                 </div>
             </div>
         </div>
         <div class="footer-copyright">
             <div class="container">
-                Copyright © 2014. Wszystkie prawa zastrzeżone.
+                Copyright © {{ "now"|date('Y') }}. Wszystkie prawa zastrzeżone.
                 <a class="right" href="{{ url('map_categories') }}">Mapa kategorii</a>
             </div>
         </div>
